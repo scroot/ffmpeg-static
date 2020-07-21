@@ -103,10 +103,10 @@ download \
   "https://github.com/madler/zlib/archive/"
 
 download \
-  "last_x264.tar.bz2" \
+  "x264-stable.tar.bz2" \
   "" \
   "nil" \
-  "http://download.videolan.org/pub/videolan/x264/snapshots/"
+  "https://code.videolan.org/videolan/x264/-/archive/stable/"
 
 download \
   "x265_2.7.tar.gz" \
@@ -212,9 +212,9 @@ download \
   "https://github.com/xiph/speex/archive/"
 
 download \
-  "n4.0.tar.gz" \
-  "ffmpeg4.0.tar.gz" \
-  "4749a5e56f31e7ccebd3f9924972220f" \
+  "n3.4.8.tar.gz" \
+  "ffmpeg3.4.8.tar.gz" \
+  "nil" \
   "https://github.com/FFmpeg/FFmpeg/archive"
 
 [ $download_only -eq 1 ] && exit 0
@@ -295,7 +295,8 @@ make install
 echo "*** Building fribidi ***"
 cd $BUILD_DIR/fribidi-*
 [ $rebuild -eq 1 -a -f Makefile ] && make distclean || true
-./configure --prefix=$TARGET_DIR --disable-shared --enable-static --disable-docs
+#./configure --prefix=$TARGET_DIR --disable-shared --enable-static --disable-docs
+./configure --prefix=$TARGET_DIR --disable-shared --enable-static 
 make -j $jval
 make install
 
